@@ -1,6 +1,5 @@
 package io.twcch.bookmarkserver.controller.v1;
 
-import io.twcch.bookmarkserver.constant.ProductCategory;
 import io.twcch.bookmarkserver.dto.ProductRequest;
 import io.twcch.bookmarkserver.model.Product;
 import io.twcch.bookmarkserver.service.ProductService;
@@ -27,7 +26,7 @@ public class ProductControllerV1 {
         Product product = productService.getProductById(productId);
 
         if (product != null) {
-            return  ResponseEntity.status(HttpStatus.OK).body(product);
+            return ResponseEntity.status(HttpStatus.OK).body(product);
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

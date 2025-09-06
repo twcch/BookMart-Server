@@ -1,6 +1,5 @@
 package io.twcch.bookmarkserver.service;
 
-import io.twcch.bookmarkserver.constant.ProductCategory;
 import io.twcch.bookmarkserver.dto.ProductRequest;
 import io.twcch.bookmarkserver.model.Product;
 
