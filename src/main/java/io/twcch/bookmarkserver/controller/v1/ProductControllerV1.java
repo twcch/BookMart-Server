@@ -1,5 +1,6 @@
 package io.twcch.bookmarkserver.controller.v1;
 
+import io.twcch.bookmarkserver.constant.ProductCategory;
 import io.twcch.bookmarkserver.dto.ProductRequest;
 import io.twcch.bookmarkserver.model.Product;
 import io.twcch.bookmarkserver.service.ProductService;
@@ -34,9 +35,12 @@ public class ProductControllerV1 {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<Product>> getProducts() {
+    public ResponseEntity<List<Product>> getProducts(
+            @RequestParam(required = false, name = "category") ProductCategory productCategory,
+            @RequestParam(required = false, name = "search") String search
+    ) {
 
-        List<Product> productList = productService.getProducts();
+        List<Product> productList = productService.getProducts(productCategory, search);
 
         return ResponseEntity.status(HttpStatus.OK).body(productList);
 

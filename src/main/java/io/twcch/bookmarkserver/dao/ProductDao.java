@@ -1,5 +1,6 @@
 package io.twcch.bookmarkserver.dao;
 
+import io.twcch.bookmarkserver.constant.ProductCategory;
 import io.twcch.bookmarkserver.dto.ProductRequest;
 import io.twcch.bookmarkserver.model.Product;
 
@@ -11,7 +12,7 @@ public interface ProductDao {
 
     public Product getProductById(Integer productId);
 
-    public List<Product> getProducts();
+    public List<Product> getProducts(ProductCategory productCategory, String search);
 
     public void updateProduct(Integer productId, ProductRequest productRequest);
 
