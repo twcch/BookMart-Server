@@ -1,12 +1,14 @@
 package io.twcch.finapi.dao.impl;
 
 import io.twcch.finapi.dao.ProductDao;
+import io.twcch.finapi.dto.ProductRequest;
 import io.twcch.finapi.model.Product;
 import io.twcch.finapi.rowmapper.ProductRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +18,34 @@ public class ProductDaoImpl implements ProductDao {
 
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+    @Override
+    public Integer createProduct(ProductRequest productRequest) {
+
+        String sql = "INSERT INTO products (product_name, category, image_url, price, stock, description, " +
+                "created_date, last_modified_date) VALUES (:productName, :category, :imageUrl, :price, " +
+                ":stock, :description, :createdDate, :lastModifiedDate)";
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("productName", productRequest.getProductName());
+        map.put("category", productRequest.getCategory());
+        map.put("imageUrl", productRequest.getImageUrl());
+        map.put("price", productRequest.getPrice());
+        map.put("stock", productRequest.getStock());
+        map.put("description", productRequest.getDescription());
+
+        Date now = new Date();
+        map.put("createdDate", now);
+        map.put("lastModifiedDate", now);
+
+        namedParameterJdbcTemplate.update(sql, map);
+
+        // 使用 SQLite 的 last_insert_rowid() 函數取得最後插入的主鍵
+        String getIdSql = "SELECT last_insert_rowid()";
+        Integer productId = namedParameterJdbcTemplate.queryForObject(getIdSql, new HashMap<>(), Integer.class);
+
+        return productId;
+    }
 
     @Override
     public Product getProductById(Integer productId) {
