@@ -11,8 +11,8 @@
     <groupId>io.twcch</groupId>
     <artifactId>BookMart-Server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>FinAPI</name>
-    <description>FinAPI</description>
+    <name>BookMart-Server</name>
+    <description>BookMart-Server</description>
     <url/>
     <licenses>
         <license/>
