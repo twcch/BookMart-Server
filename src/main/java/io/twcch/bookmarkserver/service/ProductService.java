@@ -1,7 +1,7 @@
-package io.twcch.finapi.service;
+package io.twcch.bookmarkserver.service;
 
-import io.twcch.finapi.dto.ProductRequest;
-import io.twcch.finapi.model.Product;
+import io.twcch.bookmarkserver.dto.ProductRequest;
+import io.twcch.bookmarkserver.model.Product;
 
 public interface ProductService {
 

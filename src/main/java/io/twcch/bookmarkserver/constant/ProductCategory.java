@@ -1,4 +1,4 @@
-package io.twcch.finapi.constant;
+package io.twcch.bookmarkserver.constant;
 
 public enum ProductCategory {
 

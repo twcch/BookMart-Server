@@ -1,9 +1,9 @@
-package io.twcch.finapi.service.impl;
+package io.twcch.bookmarkserver.service.impl;
 
-import io.twcch.finapi.dao.ProductDao;
-import io.twcch.finapi.dto.ProductRequest;
-import io.twcch.finapi.model.Product;
-import io.twcch.finapi.service.ProductService;
+import io.twcch.bookmarkserver.dao.ProductDao;
+import io.twcch.bookmarkserver.dto.ProductRequest;
+import io.twcch.bookmarkserver.model.Product;
+import io.twcch.bookmarkserver.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;

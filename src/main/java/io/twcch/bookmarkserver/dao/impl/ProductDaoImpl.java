@@ -1,9 +1,9 @@
-package io.twcch.finapi.dao.impl;
+package io.twcch.bookmarkserver.dao.impl;
 
-import io.twcch.finapi.dao.ProductDao;
-import io.twcch.finapi.dto.ProductRequest;
-import io.twcch.finapi.model.Product;
-import io.twcch.finapi.rowmapper.ProductRowMapper;
+import io.twcch.bookmarkserver.dao.ProductDao;
+import io.twcch.bookmarkserver.dto.ProductRequest;
+import io.twcch.bookmarkserver.model.Product;
+import io.twcch.bookmarkserver.rowmapper.ProductRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;

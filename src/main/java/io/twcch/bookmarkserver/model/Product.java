@@ -1,7 +1,7 @@
-package io.twcch.finapi.model;
+package io.twcch.bookmarkserver.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.twcch.finapi.constant.ProductCategory;
+import io.twcch.bookmarkserver.constant.ProductCategory;
 
 import java.util.Date;
 

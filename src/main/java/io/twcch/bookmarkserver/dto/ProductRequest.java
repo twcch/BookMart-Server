@@ -1,6 +1,6 @@
-package io.twcch.finapi.dto;
+package io.twcch.bookmarkserver.dto;
 
-import io.twcch.finapi.constant.ProductCategory;
+import io.twcch.bookmarkserver.constant.ProductCategory;
 import jakarta.validation.constraints.NotNull;
 
 public class ProductRequest {

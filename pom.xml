@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>io.twcch</groupId>
-    <artifactId>FinAPI</artifactId>
+    <artifactId>BookMart-Server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>FinAPI</name>
     <description>FinAPI</description>

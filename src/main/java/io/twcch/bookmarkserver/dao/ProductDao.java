@@ -1,7 +1,7 @@
-package io.twcch.finapi.dao;
+package io.twcch.bookmarkserver.dao;
 
-import io.twcch.finapi.dto.ProductRequest;
-import io.twcch.finapi.model.Product;
+import io.twcch.bookmarkserver.dto.ProductRequest;
+import io.twcch.bookmarkserver.model.Product;
 
 public interface ProductDao {
 

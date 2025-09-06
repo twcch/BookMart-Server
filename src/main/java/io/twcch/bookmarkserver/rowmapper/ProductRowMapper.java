@@ -1,7 +1,7 @@
-package io.twcch.finapi.rowmapper;
+package io.twcch.bookmarkserver.rowmapper;
 
-import io.twcch.finapi.constant.ProductCategory;
-import io.twcch.finapi.model.Product;
+import io.twcch.bookmarkserver.constant.ProductCategory;
+import io.twcch.bookmarkserver.model.Product;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

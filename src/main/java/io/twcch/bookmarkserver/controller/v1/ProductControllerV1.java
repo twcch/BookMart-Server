@@ -1,8 +1,8 @@
-package io.twcch.finapi.controller.v1;
+package io.twcch.bookmarkserver.controller.v1;
 
-import io.twcch.finapi.dto.ProductRequest;
-import io.twcch.finapi.model.Product;
-import io.twcch.finapi.service.ProductService;
+import io.twcch.bookmarkserver.dto.ProductRequest;
+import io.twcch.bookmarkserver.model.Product;
+import io.twcch.bookmarkserver.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
