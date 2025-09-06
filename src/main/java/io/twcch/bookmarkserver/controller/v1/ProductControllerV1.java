@@ -1,5 +1,6 @@
 package io.twcch.bookmarkserver.controller.v1;
 
+import io.twcch.bookmarkserver.constant.ProductCategory;
 import io.twcch.bookmarkserver.dto.ProductRequest;
 import io.twcch.bookmarkserver.model.Product;
 import io.twcch.bookmarkserver.service.ProductService;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/products")
@@ -28,6 +31,15 @@ public class ProductControllerV1 {
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<List<Product>> getProducts() {
+
+        List<Product> productList = productService.getProducts();
+
+        return ResponseEntity.status(HttpStatus.OK).body(productList);
 
     }
 

@@ -1,5 +1,6 @@
 package io.twcch.bookmarkserver.dao.impl;
 
+import io.twcch.bookmarkserver.constant.ProductCategory;
 import io.twcch.bookmarkserver.dao.ProductDao;
 import io.twcch.bookmarkserver.dto.ProductRequest;
 import io.twcch.bookmarkserver.model.Product;
@@ -63,6 +64,20 @@ public class ProductDaoImpl implements ProductDao {
         }
 
         return null;
+
+    }
+
+    @Override
+    public List<Product> getProducts() {
+
+        String sql = "SELECT product_id, product_name, category, image_url, price, stock, description, " +
+                "created_date, last_modified_date FROM products";
+
+        Map<String, Object> map = new HashMap<>();
+
+        List<Product> productList = namedParameterJdbcTemplate.query(sql, map, new ProductRowMapper());
+
+        return productList;
 
     }
 

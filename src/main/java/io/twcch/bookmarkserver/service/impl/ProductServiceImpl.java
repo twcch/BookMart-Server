@@ -1,5 +1,6 @@
 package io.twcch.bookmarkserver.service.impl;
 
+import io.twcch.bookmarkserver.constant.ProductCategory;
 import io.twcch.bookmarkserver.dao.ProductDao;
 import io.twcch.bookmarkserver.dto.ProductRequest;
 import io.twcch.bookmarkserver.model.Product;
@@ -7,6 +8,8 @@ import io.twcch.bookmarkserver.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class ProductServiceImpl implements ProductService {
@@ -26,6 +29,13 @@ public class ProductServiceImpl implements ProductService {
     public Product getProductById(Integer productId) {
 
         return productDao.getProductById(productId);
+
+    }
+
+    @Override
+    public List<Product> getProducts() {
+
+        return productDao.getProducts();
 
     }
 
