@@ -1,4 +1,4 @@
-package io.twcch.finapi.controller;
+package io.twcch.finapi.controller.v1;
 
 import io.twcch.finapi.model.Product;
 import io.twcch.finapi.service.ProductService;
