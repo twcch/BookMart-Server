@@ -3,6 +3,7 @@ package io.twcch.finapi.controller;
 import io.twcch.finapi.model.Product;
 import io.twcch.finapi.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductControllerV1 {
 
     @Autowired
+    @Qualifier("productServiceImpl")
     private ProductService productService;
 
     @GetMapping("/{productId}")
