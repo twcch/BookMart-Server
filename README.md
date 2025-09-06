@@ -11,4 +11,4 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE).
 If you have any questions or suggestions, feel free to reach out to us:
 
 Email: twcch1218 [at] twcch.io
-Thank you for your interest in TitanicSurvivalClassifer! We look forward to your contributions and hope you enjoy using and improving this project.
+Thank you for your interest in FinAPI! We look forward to your contributions and hope you enjoy using and improving this project.
