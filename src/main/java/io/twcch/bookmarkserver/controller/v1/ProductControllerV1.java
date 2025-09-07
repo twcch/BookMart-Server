@@ -6,16 +6,20 @@ import io.twcch.bookmarkserver.dto.ProductRequest;
 import io.twcch.bookmarkserver.model.Product;
 import io.twcch.bookmarkserver.service.ProductService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/products")
+@Validated
 public class ProductControllerV1 {
 
     @Autowired
@@ -46,8 +50,8 @@ public class ProductControllerV1 {
             @RequestParam(defaultValue = "DESC", name = "sort") String sort,
 
             // 分頁 Pagination
-            @RequestParam(defaultValue = "10", name = "limit") Integer limit,
-            @RequestParam(defaultValue = "0", name = "offset") Integer offset
+            @RequestParam(defaultValue = "10", name = "limit") @Max(1000) @Min(0) Integer limit,
+            @RequestParam(defaultValue = "0", name = "offset") @Min(0) Integer offset
     ) {
 
         ProductQueryParams productQueryParams = new ProductQueryParams();
