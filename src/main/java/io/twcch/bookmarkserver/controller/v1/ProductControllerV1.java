@@ -43,7 +43,11 @@ public class ProductControllerV1 {
 
             // 排序 Sorting
             @RequestParam(defaultValue = "created_date", name = "orderBy") String orderBy,
-            @RequestParam(defaultValue = "DESC", name = "sort") String sort
+            @RequestParam(defaultValue = "DESC", name = "sort") String sort,
+
+            // 分頁 Pagination
+            @RequestParam(defaultValue = "10", name = "limit") Integer limit,
+            @RequestParam(defaultValue = "0", name = "offset") Integer offset
     ) {
 
         ProductQueryParams productQueryParams = new ProductQueryParams();
@@ -51,6 +55,8 @@ public class ProductControllerV1 {
         productQueryParams.setSearch(search);
         productQueryParams.setOrderBy(orderBy);
         productQueryParams.setSort(sort);
+        productQueryParams.setLimit(limit);
+        productQueryParams.setOffset(offset);
 
         List<Product> productList = productService.getProducts(productQueryParams);
 
