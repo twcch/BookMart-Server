@@ -1,7 +1,7 @@
 package io.twcch.bookmarkserver.dao.impl;
 
-import io.twcch.bookmarkserver.constant.ProductCategory;
 import io.twcch.bookmarkserver.dao.ProductDao;
+import io.twcch.bookmarkserver.dto.ProductQueryParams;
 import io.twcch.bookmarkserver.dto.ProductRequest;
 import io.twcch.bookmarkserver.model.Product;
 import io.twcch.bookmarkserver.rowmapper.ProductRowMapper;
@@ -68,21 +68,21 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public List<Product> getProducts(ProductCategory productCategory, String search) {
+    public List<Product> getProducts(ProductQueryParams productQueryParams) {
 
         String sql = "SELECT product_id, product_name, category, image_url, price, stock, description, " +
                 "created_date, last_modified_date FROM products WHERE 1=1";
 
         Map<String, Object> map = new HashMap<>();
 
-        if (productCategory != null) {
+        if (productQueryParams.getProductCategory() != null) {
             sql += " AND category = :productCategory";
-            map.put("productCategory", productCategory.name());
+            map.put("productCategory", productQueryParams.getProductCategory().name());
         }
 
-        if (search != null) {
+        if (productQueryParams.getSearch() != null) {
             sql += " AND product_name LIKE :search";
-            map.put("search", "%" + search + "%");
+            map.put("search", "%" + productQueryParams.getSearch() + "%");
         }
 
         List<Product> productList = namedParameterJdbcTemplate.query(sql, map, new ProductRowMapper());

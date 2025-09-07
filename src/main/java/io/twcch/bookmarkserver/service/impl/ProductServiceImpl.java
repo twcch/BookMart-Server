@@ -1,7 +1,7 @@
 package io.twcch.bookmarkserver.service.impl;
 
-import io.twcch.bookmarkserver.constant.ProductCategory;
 import io.twcch.bookmarkserver.dao.ProductDao;
+import io.twcch.bookmarkserver.dto.ProductQueryParams;
 import io.twcch.bookmarkserver.dto.ProductRequest;
 import io.twcch.bookmarkserver.model.Product;
 import io.twcch.bookmarkserver.service.ProductService;
@@ -33,9 +33,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getProducts(ProductCategory productCategory, String search) {
+    public List<Product> getProducts(ProductQueryParams productQueryParams) {
 
-        return productDao.getProducts(productCategory, search);
+        return productDao.getProducts(productQueryParams);
 
     }
 
