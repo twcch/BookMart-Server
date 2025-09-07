@@ -22,6 +22,10 @@ public class ProductRequest {
 
     private String description;
 
+    public ProductRequest() {
+
+    }
+
     public String getProductName() {
         return productName;
     }
