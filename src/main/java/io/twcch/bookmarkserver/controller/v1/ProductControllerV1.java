@@ -5,6 +5,7 @@ import io.twcch.bookmarkserver.dto.ProductQueryParams;
 import io.twcch.bookmarkserver.dto.ProductRequest;
 import io.twcch.bookmarkserver.model.Product;
 import io.twcch.bookmarkserver.service.ProductService;
+import io.twcch.bookmarkserver.util.Page;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -40,7 +41,7 @@ public class ProductControllerV1 {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<Product>> getProducts(
+    public ResponseEntity<Page<Product>> getProducts(
             // 查詢條件 Filtering
             @RequestParam(required = false, name = "category") ProductCategory productCategory,
             @RequestParam(required = false, name = "search") String search,
@@ -64,7 +65,15 @@ public class ProductControllerV1 {
 
         List<Product> productList = productService.getProducts(productQueryParams);
 
-        return ResponseEntity.status(HttpStatus.OK).body(productList);
+        Integer total = productService.countProduct(productQueryParams);
+
+        Page<Product> page = new Page<>();
+        page.setLimit(limit);
+        page.setOffset(offset);
+        page.setTotal(total);
+        page.setResults(productList);
+
+        return ResponseEntity.status(HttpStatus.OK).body(page);
 
     }
 
