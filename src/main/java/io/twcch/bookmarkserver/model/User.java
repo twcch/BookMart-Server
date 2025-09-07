@@ -1,12 +1,17 @@
 package io.twcch.bookmarkserver.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.Date;
 
 public class User {
 
     private Integer userId;
+
+    @NotBlank
+    @Email
     private String email;
 
     @JsonIgnore
