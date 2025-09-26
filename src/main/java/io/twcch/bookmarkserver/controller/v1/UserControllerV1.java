@@ -1,5 +1,6 @@
 package io.twcch.bookmarkserver.controller.v1;
 
+import io.twcch.bookmarkserver.dto.UserLoginRequest;
 import io.twcch.bookmarkserver.dto.UserRegisterRequest;
 import io.twcch.bookmarkserver.model.User;
 import io.twcch.bookmarkserver.service.UserService;
@@ -26,6 +27,15 @@ public class UserControllerV1 {
         User user = userService.getUserById(userId);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
+
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<User> login(@RequestBody @Valid UserLoginRequest userLoginRequest) {
+
+        User user = userService.login(userLoginRequest);
+
+        return ResponseEntity.status(HttpStatus.OK).body(user);
 
     }
 
