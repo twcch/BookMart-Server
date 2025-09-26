@@ -1,6 +1,7 @@
 package io.twcch.bookmarkserver.controller.v1;
 
 import io.twcch.bookmarkserver.dto.CreateOrderRequest;
+import io.twcch.bookmarkserver.model.Order;
 import io.twcch.bookmarkserver.service.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,9 @@ public class OrderControllerV1 {
 
         Integer orderId = orderService.createOrder(userId, createOrderRequest);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(orderId);
+        Order order = orderService.getOrderById(orderId);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(order);
 
     }
 

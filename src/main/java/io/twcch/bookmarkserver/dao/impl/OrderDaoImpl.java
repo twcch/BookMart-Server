@@ -1,7 +1,10 @@
 package io.twcch.bookmarkserver.dao.impl;
 
 import io.twcch.bookmarkserver.dao.OrderDao;
+import io.twcch.bookmarkserver.model.Order;
 import io.twcch.bookmarkserver.model.OrderItem;
+import io.twcch.bookmarkserver.rowmapper.OrderItemRowMapper;
+import io.twcch.bookmarkserver.rowmapper.OrderRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -61,6 +64,43 @@ public class OrderDaoImpl implements OrderDao {
         }
 
         namedParameterJdbcTemplate.batchUpdate(sql, mapSqlParameterSources);
+
+    }
+
+    @Override
+    public Order getOrderById(Integer orderId) {
+
+        String sql ="SELECT order_id, user_id, total_amount, created_date, last_modified_date " +
+                "FROM orders WHERE order_id = :orderId";
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("orderId", orderId);
+
+        List<Order> query = namedParameterJdbcTemplate.query(sql, map, new OrderRowMapper());
+
+        if (!query.isEmpty()) {
+            return query.get(0);
+        }
+
+        return null;
+
+    }
+
+    @Override
+    public List<OrderItem> getOrderItemsByOrderId(Integer orderId) {
+
+        String sql = "SELECT oi.order_item_id, oi.order_id, oi.product_id, oi.quantity, oi.amount, " +
+                "p.product_name, p.image_url " +
+                "FROM order_item AS oi " +
+                "JOIN products AS p ON oi.product_id = p.product_id " +
+                "WHERE oi.order_id = :orderId";
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("orderId", orderId);
+
+        List<OrderItem> orderItemList = namedParameterJdbcTemplate.query(sql, map, new OrderItemRowMapper());
+
+        return orderItemList;
 
     }
 

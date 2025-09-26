@@ -4,6 +4,7 @@ import io.twcch.bookmarkserver.dao.OrderDao;
 import io.twcch.bookmarkserver.dao.ProductDao;
 import io.twcch.bookmarkserver.dto.BuyItem;
 import io.twcch.bookmarkserver.dto.CreateOrderRequest;
+import io.twcch.bookmarkserver.model.Order;
 import io.twcch.bookmarkserver.model.OrderItem;
 import io.twcch.bookmarkserver.model.Product;
 import io.twcch.bookmarkserver.service.OrderService;
@@ -55,6 +56,19 @@ public class OrderServiceImpl implements OrderService {
         orderDao.createOrderItems(orderId, orderItemList);
 
         return orderId;
+
+    }
+
+    @Override
+    public Order getOrderById(Integer orderId) {
+
+        Order order = orderDao.getOrderById(orderId);
+
+        List<OrderItem> orderItemList = orderDao.getOrderItemsByOrderId(orderId);
+
+        order.setOrderItemList(orderItemList);
+
+        return order;
 
     }
 
