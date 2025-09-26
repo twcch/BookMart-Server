@@ -70,7 +70,7 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public Order getOrderById(Integer orderId) {
 
-        String sql ="SELECT order_id, user_id, total_amount, created_date, last_modified_date " +
+        String sql = "SELECT order_id, user_id, total_amount, created_date, last_modified_date " +
                 "FROM orders WHERE order_id = :orderId";
 
         Map<String, Object> map = new HashMap<>();

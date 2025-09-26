@@ -1,7 +1,5 @@
 package io.twcch.bookmarkserver.rowmapper;
 
-import io.twcch.bookmarkserver.constant.ProductCategory;
-import io.twcch.bookmarkserver.model.Product;
 import io.twcch.bookmarkserver.model.User;
 import org.springframework.jdbc.core.RowMapper;
 
